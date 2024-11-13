@@ -1,6 +1,6 @@
 <?php
-$arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
-$count = count( $arr );
+$arr = [1, 2, 3, 4, 5];
+//$arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 // way to print all subarray
 // for ( $start = 0; $start < $count; $start++ ) { // start point;
@@ -13,7 +13,22 @@ $count = count( $arr );
 //     echo "\n";
 // }
 
-// Kadane's Algorithm
+//Brute Force O(n^2)
+
+function BruteForcemaxSubarraySum( $arr ) {
+    $maxSum = PHP_INT_MIN;
+    for ( $start = 0; $start < count( $arr ); $start++ ) {
+        $currentSum = 0;
+        for ( $end = $start; $end < count( $arr ); $end++ ) {
+            $currentSum += $arr[$end];
+            $maxSum = max( $maxSum, $currentSum );
+        }
+    }
+    return $maxSum;
+}
+echo BruteForcemaxSubarraySum( $arr ) . "\n";
+
+// Kadane's Algorithm  O(n)
 
 // function maxSubarraySum( $arr ) {
 //     $currentSum = 0;
