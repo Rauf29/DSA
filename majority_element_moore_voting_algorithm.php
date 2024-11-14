@@ -59,4 +59,18 @@ function VotingMajorityElement( $nums ) {
     }
     return $ans;
 }
-echo VotingMajorityElement( $nums );
+//echo VotingMajorityElement( $nums );
+
+// Kadane's algorithm
+
+function maxSubArraySum( $nums ) {
+    $currentSum = 0;
+    $ans = PHP_INT_MIN;
+    for ( $i = 0; $i < count( $nums ); $i++ ) {
+        $currentSum += $nums[$i];
+        $ans = max( $ans, $currentSum );
+        $currentSum = $currentSum < 0 ? 0 : $currentSum;
+    }
+    return $ans;
+}
+echo maxSubArraySum( $nums );
